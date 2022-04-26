@@ -1,0 +1,9 @@
+{
+  "license": "MIT",
+  "author": "Guido Schmidt <git@guidoschmidt.cc>",
+  "dependencies": {
+    "sass": "^1.51.0",
+    "vite": "^2.9.6",
+    "vite-plugin-solid": "^2.2.6"
+  }
+}
