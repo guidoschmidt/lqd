@@ -1,7 +1,7 @@
-import { Potentiometer, NumericalInput } from "../components";
+import { Potentiometer, NumericalInput, Slider } from "../components";
 
 export default {
-  title: "Components/Potentiometer",
+  title: "Components/Single",
   component: Potentiometer,
 };
 
@@ -12,3 +12,6 @@ export const NumericalInputStory = () => (
   <NumericalInput value={100} onChange={() => {}} />
 );
 NumericalInputStory.storyName = "Numerical Input";
+
+export const SliderStory = () => <Slider value={50} />;
+SliderStory.storyName = "Slider";
