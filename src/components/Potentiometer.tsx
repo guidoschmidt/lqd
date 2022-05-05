@@ -1,4 +1,4 @@
-import { createEffect, createSignal, mergeProps } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import "./Potentiometer.sass";
 
 interface IPotentiometerProps {
@@ -19,33 +19,44 @@ function Potentiometer(props: IPotentiometerProps) {
   createEffect(() => setValue(props.percent));
 
   const onPointerMove = (e: MouseEvent) => {
+    e.preventDefault();
     if (!grabbed()) return;
-    const { left, top, width, height } = knob.getBoundingClientRect();
-    const vec = [
-      width * 0.5 - (e.clientX - left),
-      height * 0.5 - (e.clientY - top),
-    ];
-    const angle = (Math.atan2(vec[1], vec[0]) * 180) / Math.PI + 180;
-    setValue(clamp(angle, 0, 360));
-    props.onChange && props.onChange(value());
+    onClick(e);
+  };
+
+  const onClick = (e: MouseEvent) => {
+    const target = e.target as HTMLDivElement;
+    const { width, height, x, y } = target.getBoundingClientRect();
+    const xRel = width * 0.5 - (e.clientX - x);
+    const yRel = height * 0.5 - (e.clientY - y);
+    const vec = [-xRel, yRel];
+    const angle = (Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI);
+    setValue(clamp(angle / 3.6, 0, 100));
+    props?.onChange(clamp(angle / 3.6, 0, 100));
   };
 
   return (
-    <div
-      class="potentiometer"
-      onPointerDown={() => setGrabbed(true)}
-      onPointerUp={() => setGrabbed(false)}
-      onPointerLeave={() => setGrabbed(false)}
-      onPointerMove={(e) => onPointerMove(e)}
-    >
+    <div class="potentiometer">
       <div
-        class="knob"
-        ref={knob}
+        class="knob-wrapper"
+        onClick={(e) => onClick(e)}
+        onPointerDown={() => setGrabbed(true)}
+        onPointerUp={() => setGrabbed(false)}
+        onPointerLeave={() => setGrabbed(false)}
+        onPointerMove={(e) => onPointerMove(e)}
         style={{
-          transform: `rotate(${value()}deg)`,
+          cursor: grabbed() ? "grab" : "pointer",
         }}
       >
-        <div class="angle-indicator" />
+        <div
+          class="knob"
+          ref={knob}
+          style={{
+            transform: `rotate(${value() * 3.6}deg)`,
+          }}
+        >
+          <div class="angle-indicator" />
+        </div>
       </div>
     </div>
   );

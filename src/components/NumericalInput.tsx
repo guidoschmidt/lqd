@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import "./NumericalInput.sass";
 
 interface INumericalInputProps {
@@ -8,6 +8,8 @@ interface INumericalInputProps {
 
 function NumericalInput(props: INumericalInputProps) {
   const [value, setValue] = createSignal(props.value);
+
+  createEffect(() => setValue(props.value));
 
   const handleChange = (v: number) => {
     setValue(v);

@@ -1,8 +1,9 @@
-import { createSignal } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import "./Slider.sass";
 
 interface ISliderProps {
   value: number;
+  onChange: (v: number) => any;
 }
 
 function Slider(props: ISliderProps) {
@@ -11,6 +12,8 @@ function Slider(props: ISliderProps) {
 
   let trackRef: HTMLDivElement;
 
+  createEffect(() => setValue(props.value));
+
   const onChange = (e: PointerEvent) => {
     const mouseX = e.clientX;
     const target = e.target as HTMLDivElement;
@@ -18,6 +21,7 @@ function Slider(props: ISliderProps) {
     const { width, x } = target.getBoundingClientRect();
     const newValue = ((mouseX - x) / width) * 100;
     setValue(newValue);
+    props.onChange && props.onChange(newValue);
   };
 
   return (
@@ -26,6 +30,7 @@ function Slider(props: ISliderProps) {
         class="track-wrapper"
         onPointerMove={(e) => pointerDown() && onChange(e)}
         onPointerLeave={() => setPointerDown(false)}
+        onPointerDown={() => setPointerDown(true)}
         onClick={onChange}
       >
         <div class="track" ref={trackRef}>

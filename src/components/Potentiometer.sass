@@ -1,20 +1,25 @@
 .potentiometer
   --size: 40px
-  width: calc(var(--size) + 40px)
+  min-width: calc(var(--size) + 40px)
   height: calc(var(--size) + 40px)
   box-sizing: border-box
   display: flex
-  justify-content: center
-  align-items: center
+  justify-content: stretch
+  align-items: stretch
   background: var(--color-bg)
   outline: 1px solid var(--color-border)
   transition: outline 200ms ease
   outline-offset: -1px
-  cursor: grab
+  .knob-wrapper
+    flex-grow: 1
+    margin: 5px
+    display: flex
+    justify-content: center
+    align-items: center
   &:hover
     outline-color: var(--color-hover)
     .knob
-      --size: 35px
+      --size: 30px
       background: var(--color-hover)
       .angle-indicator
         background: var(--color-hover)
@@ -28,6 +33,7 @@
     justify-content: center
     align-items: flex-end
     transition: background 200ms ease, width 200ms ease, height 200ms ease
+    pointer-events: none
     .angle-indicator
       transition: background 200ms ease, transform 200ms ease
       box-sizing: border-box
