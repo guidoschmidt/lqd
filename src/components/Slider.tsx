@@ -15,17 +15,27 @@ function Slider(props: ISliderProps) {
   createEffect(() => setValue(props.value));
 
   const onChange = (e: PointerEvent) => {
-    const mouseX = e.clientX;
+    /** Horizontal */
+    // const mouseX = e.clientX;
+    // const target = e.target as HTMLDivElement;
+    // if (target.className.includes("knob")) return;
+    // const { width, x } = target.getBoundingClientRect();
+    // const newValue = ((mouseX - x) / width) * 100;
+    // setValue(newValue);
+    // props.onChange && props.onChange(newValue);
+
+    /** Vertical */
+    const mouseY = e.clientY;
     const target = e.target as HTMLDivElement;
     if (target.className.includes("knob")) return;
-    const { width, x } = target.getBoundingClientRect();
-    const newValue = ((mouseX - x) / width) * 100;
+    const { height, y } = target.getBoundingClientRect();
+    const newValue = ((mouseY - y) / height) * 100;
     setValue(newValue);
     props.onChange && props.onChange(newValue);
   };
 
   return (
-    <div class="slider">
+    <div class="slider vertical">
       <div
         class="track-wrapper"
         onPointerMove={(e) => pointerDown() && onChange(e)}
@@ -36,7 +46,7 @@ function Slider(props: ISliderProps) {
         <div class="track" ref={trackRef}>
           <div
             class="knob"
-            style={{ left: `${value()}%` }}
+            style={{ top: `${value()}%` }}
             onPointerDown={() => setPointerDown(true)}
             onPointerUp={() => setPointerDown(false)}
           />
