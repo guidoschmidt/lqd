@@ -1,5 +1,10 @@
 import { createSignal } from "solid-js";
-import { Potentiometer, NumericalInput, Slider } from "../components";
+import {
+  Potentiometer,
+  NumericalInput,
+  Slider,
+  RadioButton,
+} from "../components";
 
 export default {
   title: "Components/Single",
@@ -34,3 +39,26 @@ export const SliderArrayStory = () => {
   );
 };
 SliderStory.storyName = "Slider";
+
+export const RadioButtonStory = () => <RadioButton on={true} />;
+RadioButtonStory.storyName = "Radio Button";
+
+export const RadioButtonArrayStory = () => {
+  const [value, setValue] = createSignal(0);
+
+  return (
+    <div
+      style={{
+        width: "fit-content",
+        display: "grid",
+        "grid-template-columns": "repeat(10, 1fr)",
+        "grid-gap": "0px",
+      }}
+    >
+      {new Array(30).fill(0).map((_) => (
+        <RadioButton on={Math.random() < 0.5} />
+      ))}
+    </div>
+  );
+};
+RadioButtonStory.storyName = "Radio Button";

@@ -1,3 +1,4 @@
-export * from "./Potentiometer";
 export * from "./NumericalInput";
+export * from "./Potentiometer";
+export * from "./RadioButton";
 export * from "./Slider";
