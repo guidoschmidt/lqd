@@ -18,7 +18,7 @@ export const PotentiometerStory = () => {
   //   updateStore("values", (l) =>
   //     l.map(() => ({ v: Math.round(Math.random() * 100) }))
   //   );
-  // }, 1000);
+  // }, 100);
 
   return (
     <div
@@ -47,7 +47,7 @@ export const PotentiometerStory = () => {
                 "align-items": "center",
                 width: "100%",
                 height: "50px",
-                background: "#ec3000",
+                background: "var(--color-fg)",
                 opacity: `${e.v}%`,
               }}
             />
