@@ -7,23 +7,27 @@
   justify-content: stretch
   align-items: stretch
   background: var(--color-bg)
-  outline: 1px solid var(--color-border)
+  outline: var(--outline-width) solid var(--color-border)
   transition: outline 200ms ease
-  outline-offset: -1px
+  outline-offset: -var(--outline-width)
+  margin: var(--outline-width)
+  &:hover
+    outline-color: var(--color-encoders)
+    .knob-wrapper
+      .knob
+        --size: 30px
+        background: var(--color-encoders)
+        .angle-indicator
+          background: var(--color-encoders)
+          transform: translateY(10px)
+
   .knob-wrapper
     flex-grow: 1
     margin: 5px
     display: flex
     justify-content: center
     align-items: center
-  &:hover
-    outline-color: var(--color-hover)
-    .knob
-      --size: 30px
-      background: var(--color-hover)
-      .angle-indicator
-        background: var(--color-hover)
-        transform: translateY(10px)
+
   .knob
     background: var(--color-fg)
     border-radius: 100%

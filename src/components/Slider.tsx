@@ -16,22 +16,22 @@ function Slider(props: ISliderProps) {
 
   const onChange = (e: PointerEvent) => {
     /** Horizontal */
-    // const mouseX = e.clientX;
-    // const target = e.target as HTMLDivElement;
-    // if (target.className.includes("knob")) return;
-    // const { width, x } = target.getBoundingClientRect();
-    // const newValue = ((mouseX - x) / width) * 100;
-    // setValue(newValue);
-    // props.onChange && props.onChange(newValue);
-
-    /** Vertical */
-    const mouseY = e.clientY;
+    const mouseX = e.clientX;
     const target = e.target as HTMLDivElement;
     if (target.className.includes("knob")) return;
-    const { height, y } = target.getBoundingClientRect();
-    const newValue = ((mouseY - y) / height) * 100;
+    const { width, x } = target.getBoundingClientRect();
+    const newValue = ((mouseX - x) / width) * 100;
     setValue(newValue);
     props.onChange && props.onChange(newValue);
+
+    /** Vertical */
+    // const mouseY = e.clientY;
+    // const target = e.target as HTMLDivElement;
+    // if (target.className.includes("knob")) return;
+    // const { height, y } = target.getBoundingClientRect();
+    // const newValue = ((height - (mouseY - y)) / height) * 100;
+    // setValue(newValue);
+    // props.onChange && props.onChange(newValue);
   };
 
   return (
@@ -46,7 +46,8 @@ function Slider(props: ISliderProps) {
         <div class="track" ref={trackRef}>
           <div
             class="knob"
-            style={{ top: `${value()}%` }}
+            // style={{ top: `${100 - value()}%` }}
+            style={{ left: `${value()}%` }}
             onPointerDown={() => setPointerDown(true)}
             onPointerUp={() => setPointerDown(false)}
           />

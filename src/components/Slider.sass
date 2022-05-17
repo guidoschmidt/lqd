@@ -1,53 +1,77 @@
 .slider
+  --track-width: 2px
+  --thumb-width: 20px
+  --thumb-height: 4px
+
   padding: 20px
   background: var(--color-bg)
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
-  /* min-height: 40px
-  /* min-width: 40px
-  height: 200px
+
+  // Horizontal
+  min-height: 40px
   min-width: 40px
-  outline: 1px solid var(--color-border)
-  outline-offset: -1px
+
+  // Vertical
+  /* height: 200px
+  /* min-width: 40px
+
+  outline: var(--outline-width) solid var(--color-border)
+  outline-offset: -var(--outline-width)
+  margin: var(--outline-width)
   transition: outline 200ms ease
   &:hover
-    outline-color: var(--color-hover)
+    outline-color: var(--color-slider)
+    .track-wrapper
+      .track
+        background: var(--color-slider)
+        .knob
+          background: var(--color-slider)
+
+          // Horizontal
+          min-height: calc(var(--thumb-width) * 2.0)
+
+          // Vertical 
+          /* min-width: calc(var(--thumb-width) * 2.0)
+
   .track-wrapper
     width: 100%
     height: 100%
-    /* flex-grow: 1
+    flex-grow: 1
     display: flex
     justify-content: center
     align-items: center
     cursor: pointer
-    &:hover
-      .track
-        background: var(--color-hover)
-        .knob
-          background: var(--color-hover)
-          /* height: 35px
-          min-width: 35px
     .track
-      /* width: 100%
-      /* height: 2px
-      width: 2px
-      height: 100%
+      // Horizontal
+      width: 100%
+      height: 2px
+      align-items: center
+
+      // Vertical
+      /* width: var(--track-width)
+      /* height: 100%
+      /* justify-content: center
+
       background: var(--color-fg)
       display: flex
-      /* align-items: center
-      justify-content: center
       box-sizing: border-box
       transition: background 200ms ease
       .knob
         cursor: pointer
         position: relative
-        /* width: 6px
-        /* height: 20px
-        height: 6px
-        min-width: 20px
-        transform: translateY(-3px)
-        /* transform: translateX(-3px)
+
+        // Horizontal
+        width: var(--thumb-height)
+        min-height: var(--thumb-width)
+
+        // Vertical
+        /* height: var(--thumb-height)
+        /* min-width: var(--thumb-width)
+
+        transform: translateX(-50%)
+
         background: var(--color-fg)
-        transition: background 200ms ease, height 200ms ease, min-width 200ms ease
+        transition: background 200ms ease, height 200ms ease, min-width 200ms ease, min-height 200ms ease

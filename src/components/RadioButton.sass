@@ -6,17 +6,19 @@
   justify-content: center
   align-items: center
   width: fit-content
-  outline: 1px solid var(--color-border)
-  outline-offset: -1px
+  outline: var(--outline-width) solid var(--color-border)
+  outline-offset: -var(--outline-width)
+  margin: var(--outline-width)
   transition: outline 200ms ease
   cursor: pointer
   padding: 8px
   &:hover
-    outline-color: var(--color-hover)
+    outline-color: var(--color-toggles)
     .state
       opacity: 1.0
       transform: scale(1.2)
-      background: var(--color-hover)
+      background: var(--color-toggles)
+
   .state
     min-width: 20px
     min-height: 20px

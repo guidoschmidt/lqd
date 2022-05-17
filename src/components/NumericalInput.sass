@@ -2,10 +2,17 @@
   display: flex
   background: var(--color-bg)
   width: fit-content
-  outline: 1px solid var(--color-border)
-  outline-offset: -1px
+  outline: var(--outline-width) solid var(--color-border)
+  outline-offset: - var(--outline-width)
+  margin: var(--outline-width)
   &:hover
-    outline-color: var(--color-hover)
+    outline-color: var(--color-inputs)
+    .button
+      color: var(--color-inputs)
+    .input
+      border-color: var(--color-inputs)
+      color: var(--color-inputs)
+
   .button
     padding: 10px
     background: transparent
@@ -14,21 +21,25 @@
     color: var(--color-fg)
     cursor: pointer
     min-width: 60px
-    &:hover
-      color: var(--color-hover)
+    &:active,
+    &:focus
+      border: 0
+      outline: 0
+
   .input
+    color: var(--color-fg)
     background: transparent
     border: 0
     text-align: center
     font-family: var(--font-family)
-    border-left: 1px solid var(--color-border)
-    border-right: 1px solid var(--color-border)
+    border-left: var(--outline-width) solid var(--color-border)
+    border-right: var(--outline-width) solid var(--color-border)
     -webkit-appearance: none
     -moz-appearance: textfield
     font-size: 20px
     width: fit-content
     max-width: 10ch
     padding: 20px 0
-    &:hover
-      border-color: var(--color-hover)
-      color: var(--color-hover)
+    &:active,
+    &:focus
+      outline: 0
