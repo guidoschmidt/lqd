@@ -3,11 +3,18 @@
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "example": "vite serve ./examples/10print"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-decorators": "^7.17.12",
+    "@types/random": "^3.0.1",
+    "@types/seedrandom": "^3.0.2",
+    "random": "^3.0.6",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
+    "seedrandom": "^3.0.5",
     "solid-js": "^1.4.1",
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"
