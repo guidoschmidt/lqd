@@ -1,4 +1,6 @@
 {
+  "name": "lqd",
+  "version": "0.0.0-alpha",
   "license": "MIT",
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
   "scripts": {
@@ -13,23 +15,23 @@
     "@types/seedrandom": "^3.0.2",
     "random": "^3.0.6",
     "sass": "^1.51.0",
-    "sass-loader": "^12.6.0",
+    "sass-loader": "^13.0.0",
     "seedrandom": "^3.0.5",
-    "solid-js": "^1.4.1",
+    "solid-js": "^1.4.2",
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.12",
-    "@storybook/addon-actions": "^6.4.22",
-    "@storybook/addon-essentials": "^6.4.22",
-    "@storybook/addon-links": "^6.4.22",
-    "@storybook/addons": "^6.4.22",
-    "@storybook/builder-webpack5": "^6.4.22",
-    "@storybook/html": "^6.4.22",
-    "@storybook/manager-webpack5": "^6.4.22",
+    "@babel/core": "^7.18.0",
+    "@storybook/addon-actions": "^6.5.3",
+    "@storybook/addon-essentials": "^6.5.3",
+    "@storybook/addon-links": "^6.5.3",
+    "@storybook/addons": "^6.5.3",
+    "@storybook/builder-webpack5": "^6.5.3",
+    "@storybook/html": "^6.5.3",
+    "@storybook/manager-webpack5": "^6.5.3",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/theming": "^6.4.22",
+    "@storybook/theming": "^6.5.3",
     "babel-loader": "^8.2.5"
   }
 }
