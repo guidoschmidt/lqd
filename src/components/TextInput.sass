@@ -1,0 +1,28 @@
+.text-input
+  margin: var(--outline-width)
+  display: flex
+  justify-content: stretch
+  align-items: stretch
+  &:hover
+    input
+      color: var(--color-inputs)
+      outline-color: var(--color-inputs)
+
+  input
+    text-transform: uppercase
+    color: var(--color-fg)
+    flex-grow: 1
+    border: 0
+    padding: 15px 10px
+    display: flex
+    background: var(--color-bg)
+    width: fit-content
+    font-family: var(--font-family)
+    font-size: var(--font-size)
+    outline: var(--outline-width) solid var(--color-border)
+    outline-offset: - var(--outline-width)
+    transition: outline 500ms ease
+    &:active,
+    &:focus
+      color: var(--color-inputs)
+      outline: var(--outline-width) solid var(--color-inputs)
