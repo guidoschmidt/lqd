@@ -11,8 +11,11 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.17.12",
     "@babel/plugin-proposal-decorators": "^7.17.12",
+    "@types/noisejs": "^0.0.28",
     "@types/random": "^3.0.1",
     "@types/seedrandom": "^3.0.2",
+    "babel-plugin-polyfill-corejs2": "^0.3.1",
+    "noisejs": "^2.1.0",
     "random": "^3.0.6",
     "sass": "^1.51.0",
     "sass-loader": "^13.0.0",

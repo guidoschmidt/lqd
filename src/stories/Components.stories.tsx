@@ -4,6 +4,7 @@ import {
   NumericalInput,
   Slider,
   RadioButton,
+  TextInput,
 } from "../components";
 
 export default {
@@ -62,3 +63,15 @@ export const RadioButtonArrayStory = () => {
   );
 };
 RadioButtonStory.storyName = "Radio Button";
+
+export const TextInputStory = () => {
+  const [text, setText] = createSignal<string>("Test");
+
+  return (
+    <div>
+      <code>{text()}</code>
+      <TextInput value={text()} onChange={(v: string) => setText(v)} />
+    </div>
+  );
+};
+TextInputStory.storyName = "Text Input";
