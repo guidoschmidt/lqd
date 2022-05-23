@@ -1,5 +1,2 @@
+import "./sass/lqd.sass";
 export * from "./components";
-
-const test = () => console.log("TEST");
-
-export { test };
