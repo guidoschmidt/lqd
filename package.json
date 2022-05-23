@@ -3,10 +3,20 @@
   "version": "0.0.0-alpha",
   "license": "MIT",
   "author": "Guido Schmidt <git@guidoschmidt.cc>",
+  "main": "./dist/lqd.umd.js",
+  "module": "./dist/lqd.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lqd.es.js",
+      "require": "./dist/lqd.umd.js"
+    }
+  },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "example": "vite serve ./examples/10print"
+    "example": "vite serve ./examples/10print",
+    "dev": "vite",
+    "build": "tsc && vite build ."
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.17.12",
@@ -17,24 +27,25 @@
     "babel-plugin-polyfill-corejs2": "^0.3.1",
     "noisejs": "^2.1.0",
     "random": "^3.0.6",
-    "sass": "^1.51.0",
+    "sass": "^1.52.1",
     "sass-loader": "^13.0.0",
     "seedrandom": "^3.0.5",
     "solid-js": "^1.4.2",
-    "vite": "^2.9.9",
+    "typescript": "^4.6.4",
+    "vite": "2.7.3",
     "vite-plugin-solid": "^2.2.6"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
-    "@storybook/addon-actions": "^6.5.3",
-    "@storybook/addon-essentials": "^6.5.3",
-    "@storybook/addon-links": "^6.5.3",
-    "@storybook/addons": "^6.5.3",
-    "@storybook/builder-webpack5": "^6.5.3",
-    "@storybook/html": "^6.5.3",
-    "@storybook/manager-webpack5": "^6.5.3",
+    "@storybook/addon-actions": "^6.5.4",
+    "@storybook/addon-essentials": "^6.5.4",
+    "@storybook/addon-links": "^6.5.4",
+    "@storybook/addons": "^6.5.4",
+    "@storybook/builder-webpack5": "^6.5.4",
+    "@storybook/html": "^6.5.4",
+    "@storybook/manager-webpack5": "^6.5.4",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/theming": "^6.5.3",
+    "@storybook/theming": "^6.5.4",
     "babel-loader": "^8.2.5"
   }
 }

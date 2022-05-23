@@ -32,7 +32,7 @@ function Potentiometer(props: IPotentiometerProps) {
     const vec = [-xRel, yRel];
     const angle = (Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI);
     setValue(clamp(angle / 3.6, 0, 100));
-    props?.onChange(clamp(angle / 3.6, 0, 100));
+    props?.onChange && props.onChange(clamp(angle / 3.6, 0, 100));
   };
 
   return (
@@ -50,7 +50,7 @@ function Potentiometer(props: IPotentiometerProps) {
       >
         <div
           class="knob"
-          ref={knob}
+          ref={knob!}
           style={{
             transform: `rotate(${value() * 3.6}deg)`,
           }}

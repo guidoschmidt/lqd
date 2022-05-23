@@ -14,7 +14,7 @@ function Slider(props: ISliderProps) {
 
   createEffect(() => setValue(props.value));
 
-  const onChange = (e: PointerEvent) => {
+  const onChange = (e: PointerEvent | MouseEvent) => {
     /** Horizontal */
     const mouseX = e.clientX;
     const target = e.target as HTMLDivElement;
@@ -41,9 +41,9 @@ function Slider(props: ISliderProps) {
         onPointerMove={(e) => pointerDown() && onChange(e)}
         onPointerLeave={() => setPointerDown(false)}
         onPointerDown={() => setPointerDown(true)}
-        onClick={onChange}
+        onClick={(e) => onChange(e)}
       >
-        <div class="track" ref={trackRef}>
+        <div class="track" ref={trackRef!}>
           <div
             class="knob"
             // style={{ top: `${100 - value()}%` }}

@@ -1,0 +1,16 @@
+{
+  "files": ["./src/lib.ts"],
+  "compilerOptions": {
+    "outDir": "lib",
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "experimentalDecorators": true
+  }
+}
