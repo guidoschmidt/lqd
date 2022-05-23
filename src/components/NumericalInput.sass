@@ -5,6 +5,7 @@
   outline: var(--outline-width) solid var(--color-border)
   outline-offset: - var(--outline-width)
   margin: var(--outline-width)
+  width: calc(100% - 2 * var(--outline-width))
   &:hover
     outline-color: var(--color-inputs)
     .button
@@ -27,6 +28,7 @@
       outline: 0
 
   .input
+    flex-grow: 1
     color: var(--color-fg)
     background: transparent
     border: 0
@@ -38,7 +40,6 @@
     -moz-appearance: textfield
     font-size: var(--font-size)
     width: fit-content
-    max-width: 10ch
     padding: 20px 0
     &:active,
     &:focus
