@@ -1,9 +1,10 @@
 import { createSignal } from "solid-js";
 import {
-  Potentiometer,
+  ColorInput,
   NumericalInput,
-  Slider,
+  Potentiometer,
   RadioButton,
+  Slider,
   TextInput,
 } from "../components";
 
@@ -75,3 +76,12 @@ export const TextInputStory = () => {
   );
 };
 TextInputStory.storyName = "Text Input";
+
+export const ColorInputStory = () => {
+  return (
+    <div>
+      <ColorInput />
+    </div>
+  );
+};
+ColorInputStory.storyName = "Color Input";

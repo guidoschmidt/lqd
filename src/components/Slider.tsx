@@ -3,7 +3,7 @@ import "./Slider.sass";
 
 interface ISliderProps {
   value: number;
-  onChange: (v: number) => any;
+  onChange?: (v: number) => any;
 }
 
 function Slider(props: ISliderProps) {

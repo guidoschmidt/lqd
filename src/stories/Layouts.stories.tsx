@@ -5,6 +5,7 @@ import {
   Potentiometer,
   NumericalInput,
   Slider,
+  ColorInput,
 } from "../components";
 import noisejs from "noisejs";
 const noise = new noisejs["Noise"]();
@@ -23,6 +24,7 @@ export const PotentiometerStory = () => {
       v: Math.round(Math.random() * 100),
       l: `Input ${i}`,
       f: (Math.random() - 0.5) * 3.0,
+      c: `#ffffff`,
     })),
   });
 
@@ -81,15 +83,25 @@ export const PotentiometerStory = () => {
             <div
               style={{
                 display: "flex",
-                "align-self": "center",
-                "justify-content": "center",
-                "align-items": "center",
-                width: "100%",
-                height: "50px",
-                background: "var(--color-fg)",
-                opacity: `${e.v}%`,
+                "align-self": "stretch",
+                "justify-content": "stretch",
               }}
-            />
+            >
+              <ColorInput
+                color={e.c}
+                onChange={(c) => {
+                  updateStore("values", i(), "c", c);
+                }}
+              />
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  background: e.c,
+                  opacity: `${e.v}%`,
+                }}
+              />
+            </div>
             <TextInput
               value={e.l}
               onChange={(v: string) => {
