@@ -20,7 +20,7 @@ export default {
 export const PotentiometerStory = () => {
   const [t, setT] = createSignal(0);
   const [store, updateStore] = createStore({
-    values: new Array(8).fill(0).map((_, i: number) => ({
+    values: new Array(16).fill(0).map((_, i: number) => ({
       v: Math.round(Math.random() * 100),
       l: `Input ${i}`,
       f: (Math.random() - 0.5) * 3.0,
@@ -55,77 +55,88 @@ export const PotentiometerStory = () => {
   return (
     <div
       style={{
-        width: "fit-content",
+        width: "50vw",
         display: "grid",
-        "grid-template-columns": "repeat(4, 1fr)",
+        "grid-template-columns": "repeat(8, 14vw)",
       }}
     >
       <For each={store.values}>
         {(e, i) => (
           <div
             style={{
-              background: "black",
-              display: "flex",
-              "flex-direction": "column",
-              "justify-content": "stretch",
-              "align-items": "stretch",
+              display: "grid",
+              "grid-template-columns": "20px 1fr",
             }}
           >
-            <code
+            <div
+              class="color-preview"
               style={{
-                color: "white",
-                "font-family": "monospace",
-                padding: "10px",
+                width: "100%",
+                height: "100%",
+                background: e.c,
+                opacity: `${e.v}%`,
               }}
-            >
-              {e.l}
-            </code>
+            />
             <div
               style={{
+                background: "black",
                 display: "flex",
-                "align-self": "stretch",
+                width: "100%",
+                "flex-direction": "column",
                 "justify-content": "stretch",
+                "align-items": "stretch",
               }}
             >
-              <ColorInput
-                color={e.c}
-                onChange={(c) => {
-                  updateStore("values", i(), "c", c);
+              <code
+                style={{
+                  color: "white",
+                  "font-family": "monospace",
+                  "font-size": "var(--font-size)",
+                  padding: "10px",
                 }}
-              />
+              >
+                {e.l}
+              </code>
               <div
                 style={{
                   width: "100%",
-                  height: "100%",
-                  background: e.c,
-                  opacity: `${e.v}%`,
+                  display: "flex",
+                  "align-self": "stretch",
+                  "justify-content": "stretch",
+                }}
+              >
+                <ColorInput
+                  color={e.c}
+                  onChange={(c) => {
+                    updateStore("values", i(), "c", c);
+                  }}
+                />
+              </div>
+              <TextInput
+                value={e.l}
+                onChange={(v: string) => {
+                  updateStore("values", i(), "l", v);
+                }}
+              />
+              <NumericalInput
+                value={e.v}
+                onChange={(nv: number) => {
+                  updateStore("values", i(), "v", Math.round(nv));
+                }}
+              />
+              <Potentiometer
+                percent={e.v}
+                onChange={(nv: number) => {
+                  updateStore("values", i(), "v", Math.round(nv));
+                }}
+              />
+              <Slider
+                value={e.v}
+                onChange={(nv: number) => {
+                  updateStore("values", i(), "v", Math.round(nv));
                 }}
               />
             </div>
-            <TextInput
-              value={e.l}
-              onChange={(v: string) => {
-                updateStore("values", i(), "l", v);
-              }}
-            />
-            <NumericalInput
-              value={e.v}
-              onChange={(nv: number) => {
-                updateStore("values", i(), "v", Math.round(nv));
-              }}
-            />
-            <Potentiometer
-              percent={e.v}
-              onChange={(nv: number) => {
-                updateStore("values", i(), "v", Math.round(nv));
-              }}
-            />
-            <Slider
-              value={e.v}
-              onChange={(nv: number) => {
-                updateStore("values", i(), "v", Math.round(nv));
-              }}
-            />
           </div>
         )}
       </For>
