@@ -40,7 +40,9 @@ function Potentiometer(props: IPotentiometerProps) {
     const prevVal = value();
     if (!isNaN(prevVal)) {
       const diff = Math.abs(prevVal - angle / 3.6);
-      if (diff < 10) {
+      // @TODO
+      // add difference/sensitivy property to props
+      if (diff < 50) {
         setValue(clamp(angle / 3.6, 0, 100));
         props?.onChange && props.onChange(clamp(angle / 3.6, 0, 100));
       }
