@@ -1,4 +1,5 @@
 export * from "./ColorInput";
+export * from "./IconButton";
 export * from "./NumericalInput";
 export * from "./Potentiometer";
 export * from "./RadioButton";
