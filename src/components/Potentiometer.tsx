@@ -1,10 +1,12 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, onMount } from "solid-js";
 import "./Potentiometer.sass";
 
 interface IPotentiometerProps {
   percent: number;
   onChange?: Function;
   clipped?: boolean;
+  // @TODO
+  // Add parameter for endless vs. limited rotation
 }
 
 const clamp = (v: number, min: number, max: number): number => {
@@ -13,10 +15,14 @@ const clamp = (v: number, min: number, max: number): number => {
 
 function Potentiometer(props: IPotentiometerProps) {
   let knob: HTMLDivElement;
-  let [value, setValue] = createSignal(props.percent);
+  let [value, setValue] = createSignal(0);
   let [grabbed, setGrabbed] = createSignal(false);
 
   createEffect(() => setValue(props.percent));
+
+  onMount(() => {
+    setValue(props.percent);
+  });
 
   const onPointerMove = (e: MouseEvent) => {
     e.preventDefault();
@@ -31,8 +37,17 @@ function Potentiometer(props: IPotentiometerProps) {
     const yRel = height * 0.5 - (e.clientY - y);
     const vec = [-xRel, yRel];
     const angle = (Math.atan2(vec[0], vec[1]) + Math.PI) * (180 / Math.PI);
-    setValue(clamp(angle / 3.6, 0, 100));
-    props?.onChange && props.onChange(clamp(angle / 3.6, 0, 100));
+    const prevVal = value();
+    if (!isNaN(prevVal)) {
+      const diff = Math.abs(prevVal - angle / 3.6);
+      if (diff < 10) {
+        setValue(clamp(angle / 3.6, 0, 100));
+        props?.onChange && props.onChange(clamp(angle / 3.6, 0, 100));
+      }
+    } else {
+      setValue(clamp(angle / 3.6, 0, 100));
+      props?.onChange && props.onChange(clamp(angle / 3.6, 0, 100));
+    }
   };
 
   return (
