@@ -9,15 +9,6 @@
   flex-direction: column
   justify-content: center
   align-items: center
-
-  // Horizontal
-  min-height: 40px
-  /* min-width: 40px
-
-  // Vertical
-  /* height: 200px
-  /* min-width: 40px
-
   outline: var(--outline-width) solid var(--color-border)
   outline-offset: -var(--outline-width)
   margin: var(--outline-width)
@@ -30,11 +21,40 @@
         .knob
           background: var(--color-slider)
 
-          // Horizontal
-          min-height: calc(var(--thumb-width) * 2.0)
+  &.horizontal
+    min-height: 40px
+    .track-wrapper
+      .track
+        width: 100%
+        height: 2px
+        align-items: center
+        .knob
+          transform: translateX(-50%)
+          width: var(--thumb-height)
+          min-height: var(--thumb-width)
+    &:hover
+      .track-wrapper
+        .track
+          .knob
+            min-height: calc(var(--thumb-width) * 2.0)
 
-          // Vertical 
-          /* min-width: calc(var(--thumb-width) * 2.0)
+  &.vertical
+    height: 200px
+    min-width: 40px
+    .track-wrapper
+      .track
+        width: var(--track-width)
+        height: 100%
+        justify-content: center
+        .knob
+          transform: translateY(-50%)
+          height: var(--thumb-height)
+          min-width: var(--thumb-width)
+    &:hover
+      .track-wrapper
+        .track
+          .knob
+            min-width: calc(var(--thumb-width) * 2.0)
 
   .track-wrapper
     width: 100%
@@ -46,16 +66,6 @@
     cursor: pointer
     min-height: var(--thumb-width)
     .track
-      // Horizontal
-      width: 100%
-      height: 2px
-      align-items: center
-
-      // Vertical
-      /* width: var(--track-width)
-      /* height: 100%
-      /* justify-content: center
-
       background: var(--color-fg)
       display: flex
       box-sizing: border-box
@@ -63,16 +73,5 @@
       .knob
         cursor: pointer
         position: relative
-
-        // Horizontal
-        width: var(--thumb-height)
-        min-height: var(--thumb-width)
-
-        // Vertical
-        /* height: var(--thumb-height)
-        /* min-width: var(--thumb-width)
-
-        transform: translateX(-50%)
-
         background: var(--color-fg)
         transition: background 200ms ease, height 200ms ease, min-width 200ms ease, min-height 200ms ease

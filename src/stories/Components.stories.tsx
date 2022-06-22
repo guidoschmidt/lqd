@@ -5,6 +5,7 @@ import {
   Potentiometer,
   RadioButton,
   Slider,
+  SliderOrientation,
   TextInput,
 } from "../components";
 
@@ -21,7 +22,12 @@ export const NumericalInputStory = () => (
 );
 NumericalInputStory.storyName = "Numerical Input";
 
-export const SliderStory = () => <Slider value={0} />;
+export const SliderStory = () => (
+  <div>
+    <Slider value={0} orientation={SliderOrientation.Horizontal} />
+    <Slider value={0} orientation={SliderOrientation.Vertical} />
+  </div>
+);
 SliderStory.storyName = "Slider";
 
 export const SliderArrayStory = () => {
@@ -35,7 +41,11 @@ export const SliderArrayStory = () => {
       }}
     >
       {new Array(24).fill(0).map((_, i: number) => (
-        <Slider value={value()} onChange={(nv) => setValue(nv)} />
+        <Slider
+          value={value()}
+          onChange={(nv) => setValue(nv)}
+          orientation={SliderOrientation.Vertical}
+        />
       ))}
     </div>
   );

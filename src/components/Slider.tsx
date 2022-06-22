@@ -1,9 +1,15 @@
 import { createSignal, createEffect } from "solid-js";
 import "./Slider.sass";
 
+export enum SliderOrientation {
+  Horizontal,
+  Vertical,
+}
+
 interface ISliderProps {
   value: number;
   onChange?: (v: number) => any;
+  orientation?: SliderOrientation;
 }
 
 function Slider(props: ISliderProps) {
@@ -16,26 +22,35 @@ function Slider(props: ISliderProps) {
 
   const onChange = (e: PointerEvent | MouseEvent) => {
     /** Horizontal */
-    const mouseX = e.clientX;
-    const target = e.target as HTMLDivElement;
-    if (target.className.includes("knob")) return;
-    const { width, x } = target.getBoundingClientRect();
-    const newValue = ((mouseX - x) / width) * 100;
-    setValue(newValue);
-    props.onChange && props.onChange(newValue);
-
+    if (props.orientation == SliderOrientation.Horizontal) {
+      const mouseX = e.clientX;
+      const target = e.target as HTMLDivElement;
+      if (target.className.includes("knob")) return;
+      const { width, x } = target.getBoundingClientRect();
+      const newValue = ((mouseX - x) / width) * 100;
+      setValue(newValue);
+      props.onChange && props.onChange(newValue);
+    }
     /** Vertical */
-    // const mouseY = e.clientY;
-    // const target = e.target as HTMLDivElement;
-    // if (target.className.includes("knob")) return;
-    // const { height, y } = target.getBoundingClientRect();
-    // const newValue = ((height - (mouseY - y)) / height) * 100;
-    // setValue(newValue);
-    // props.onChange && props.onChange(newValue);
+    if (props.orientation == SliderOrientation.Vertical) {
+      const mouseY = e.clientY;
+      const target = e.target as HTMLDivElement;
+      if (target.className.includes("knob")) return;
+      const { height, y } = target.getBoundingClientRect();
+      const newValue = ((height - (mouseY - y)) / height) * 100;
+      setValue(newValue);
+      props.onChange && props.onChange(newValue);
+    }
   };
 
   return (
-    <div class="slider vertical">
+    <div
+      class={`slider ${
+        props.orientation === SliderOrientation.Vertical
+          ? "vertical"
+          : "horizontal"
+      }`}
+    >
       <div
         class="track-wrapper"
         onPointerMove={(e) => pointerDown() && onChange(e)}
@@ -46,8 +61,11 @@ function Slider(props: ISliderProps) {
         <div class="track" ref={trackRef!}>
           <div
             class="knob"
-            // style={{ top: `${100 - value()}%` }}
-            style={{ left: `${value()}%` }}
+            style={
+              props.orientation === SliderOrientation.Vertical
+                ? { top: `${100 - value()}%` }
+                : { left: `${value()}%` }
+            }
             onPointerDown={() => setPointerDown(true)}
             onPointerUp={() => setPointerDown(false)}
           />
