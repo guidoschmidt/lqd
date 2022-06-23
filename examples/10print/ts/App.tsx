@@ -1,5 +1,5 @@
 import { createStore } from "solid-js/store";
-// import { UiElement } from "doug.ui";
+import { UiGenerator } from "lqd";
 import random from "random";
 import * as seedrandom from "seedrandom";
 import { Settings } from "./Settings";
@@ -93,12 +93,12 @@ function App() {
         margin: "40px",
       }}
     >
-      {/*<UiElement
-       store={settings}
-       updateStore={updateSettings}
-       class="ui"
-       onChange={render}
-        />*/}
+      <UiGenerator
+        store={settings}
+        updateStore={updateSettings}
+        class="ui"
+        onChange={render}
+      />
       <canvas
         width={window.innerWidth - 100}
         height={window.innerHeight - 100}

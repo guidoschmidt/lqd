@@ -5,7 +5,7 @@ import solidPlugin from "vite-plugin-solid";
 export default defineConfig({
   resolve: {
     alias: {
-      "doug.ui": path.resolve(__dirname, "../../src/lib.ts"),
+      lqd: path.resolve(__dirname, "../../src/lib.ts"),
     },
   },
   plugins: [
