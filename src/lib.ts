@@ -1,3 +1,5 @@
-export * from "./automatic/UiGenerator";
-export * from "./components";
+// Style
 import "./sass/lqd.sass";
+
+export * from "./automatic";
+export * from "./components";
