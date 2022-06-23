@@ -52,14 +52,14 @@ function App() {
           });
       });
 
-    const { h: bh, s: bs, v: bv } = invert ? foregroundColor : backgroundColor;
-    ctx.fillStyle = `hsl(${bh}, ${bs}%, ${bv}%)`;
+    const rectColor = invert ? foregroundColor : backgroundColor;
+    ctx.fillStyle = rectColor;
     ctx.fillRect(0, 0, width, height);
 
-    const { h: fh, s: fs, v: fv } = invert ? backgroundColor : foregroundColor;
+    const lineColor = invert ? backgroundColor : foregroundColor;
     ctx.lineWidth = lineWidth;
     ctx.lineCap = "round";
-    ctx.strokeStyle = `hsl(${fh}, ${fs}%, ${fv}%)`;
+    ctx.strokeStyle = lineColor;
 
     tiles.map((row) => {
       row.map((rect) => {
