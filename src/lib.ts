@@ -1,2 +1,3 @@
-import "./sass/lqd.sass";
+export * from "./automatic/UiGenerator";
 export * from "./components";
+import "./sass/lqd.sass";
