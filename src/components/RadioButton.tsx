@@ -12,8 +12,9 @@ function RadioButton(props: IRadioButtonProps) {
   createEffect(() => setOn(props.on));
 
   const handleClick = () => {
-    setOn(!isOn());
-    props.onChange && props.onChange(!isOn());
+    const newValue = !isOn();
+    setOn(newValue);
+    props.onChange && props.onChange(newValue);
   };
 
   return (
