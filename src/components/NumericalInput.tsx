@@ -4,12 +4,17 @@ import "./NumericalInput.sass";
 interface INumericalInputProps {
   value: number;
   onChange: Function;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 function NumericalInput(props: INumericalInputProps) {
   const [value, setValue] = createSignal(props.value);
 
   createEffect(() => setValue(props.value));
+
+  // @TODO clamp value based on min/max
 
   const handleChange = (v: number) => {
     setValue(v);
@@ -18,19 +23,28 @@ function NumericalInput(props: INumericalInputProps) {
 
   return (
     <div class="numerical-input">
-      <button class="button" onClick={() => handleChange(value() - 1)}>
+      <button
+        class="button"
+        onClick={() => handleChange(value() - (props?.step || 1))}
+      >
         -
       </button>
       <input
         class="input"
         type="number"
+        step={props.step}
+        min={props.min}
+        max={props.max}
         value={value()}
         onChange={(e) => {
           const target = e.target as HTMLInputElement;
           handleChange(parseInt(target.value));
         }}
       />
-      <button class="button" onClick={() => handleChange(value() + 1)}>
+      <button
+        class="button"
+        onClick={() => handleChange(value() + (props?.step || 1))}
+      >
         +
       </button>
     </div>
