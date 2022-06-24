@@ -6,15 +6,15 @@ import { Settings } from "./Settings";
 import "../style/App.scss";
 import { onMount, onCleanup } from "solid-js";
 
-const rng = random.clone(seedrandom("0"));
-
 function App() {
   const [settings, updateSettings] = createStore(new Settings());
 
+  let rng = random.clone(seedrandom("0"));
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
 
   const render = () => {
+    rng = random.clone(seedrandom("0"));
     const { width, height } = canvas;
     const size = width <= height ? height : width;
     const {
