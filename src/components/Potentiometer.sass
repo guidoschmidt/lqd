@@ -1,18 +1,17 @@
 .potentiometer
   --size: 40px
-  /* min-width: calc(var(--size) + 40px)
-  height: calc(var(--size) + 40px)
+  grid-column: span 2
+  min-width: calc(var(--size) + 40px)
+  min-height: calc(var(--size) + 40px)
   box-sizing: border-box
   display: flex
   justify-content: stretch
   align-items: stretch
   background: var(--color-bg)
-  outline: var(--outline-width) solid var(--color-border)
   transition: outline 200ms ease
-  outline-offset: -var(--outline-width)
   margin: var(--outline-width)
+
   &:hover
-    outline-color: var(--color-encoders)
     .knob-wrapper
       .knob
         --size: 30px

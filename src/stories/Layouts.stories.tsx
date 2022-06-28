@@ -6,6 +6,9 @@ import {
   NumericalInput,
   Slider,
   ColorInput,
+  Label,
+  SliderOrientation,
+  LabelOrientatian,
 } from "../components";
 import noisejs from "noisejs";
 const noise = new noisejs["Noise"]();
@@ -17,14 +20,41 @@ export default {
   component: Potentiometer,
 };
 
+const randomHexColor = () => {
+  let result = [];
+  let hexRef = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+  ];
+  for (let n = 0; n < 6; n++) {
+    result.push(hexRef[Math.floor(Math.random() * 16)]);
+  }
+  const color = "#" + result.join("");
+  return "#" + result.join("");
+};
+
 export const PotentiometerStory = () => {
   const [t, setT] = createSignal(0);
   const [store, updateStore] = createStore({
-    values: new Array(16).fill(0).map((_, i: number) => ({
+    values: new Array(8).fill(0).map((_, i: number) => ({
       v: Math.round(Math.random() * 100),
       l: `Input ${i}`,
       f: (Math.random() - 0.5) * 3.0,
-      c: `#ffffff`,
+      c: randomHexColor(),
     })),
   });
 
@@ -35,7 +65,7 @@ export const PotentiometerStory = () => {
         "values",
         i,
         "l",
-        `Time ${t() << (1 - 0.5)} + ƒ ${(v.f / 10.0).toFixed(2)}`
+        `${t() << (1 - 0.5)} + ƒ ${(v.f / 10.0).toFixed(2)}`
       );
       updateStore(
         "values",
@@ -57,7 +87,7 @@ export const PotentiometerStory = () => {
       style={{
         width: "50vw",
         display: "grid",
-        "grid-template-columns": "repeat(8, 14vw)",
+        "grid-template-columns": "repeat(4, 20vw)",
       }}
     >
       <For each={store.values}>
@@ -87,16 +117,18 @@ export const PotentiometerStory = () => {
                 "align-items": "stretch",
               }}
             >
-              <code
-                style={{
-                  color: "white",
-                  "font-family": "monospace",
-                  "font-size": "var(--font-size)",
-                  padding: "10px",
-                }}
-              >
-                {e.l}
-              </code>
+              <Label text="TIME">
+                <code
+                  style={{
+                    color: "white",
+                    "font-family": "monospace",
+                    "font-size": "var(--font-size)",
+                    padding: "10px",
+                  }}
+                >
+                  {e.l}
+                </code>
+              </Label>
               <div
                 style={{
                   width: "100%",
@@ -105,12 +137,14 @@ export const PotentiometerStory = () => {
                   "justify-content": "stretch",
                 }}
               >
-                <ColorInput
-                  color={e.c}
-                  onChange={(c) => {
-                    updateStore("values", i(), "c", c);
-                  }}
-                />
+                <Label text="CLR">
+                  <ColorInput
+                    color={e.c}
+                    onChange={(c) => {
+                      updateStore("values", i(), "c", c);
+                    }}
+                  />
+                </Label>
               </div>
               <TextInput
                 value={e.l}
@@ -124,18 +158,23 @@ export const PotentiometerStory = () => {
                   updateStore("values", i(), "v", Math.round(nv));
                 }}
               />
-              <Potentiometer
-                percent={e.v}
-                onChange={(nv: number) => {
-                  updateStore("values", i(), "v", Math.round(nv));
-                }}
-              />
-              <Slider
-                value={e.v}
-                onChange={(nv: number) => {
-                  updateStore("values", i(), "v", Math.round(nv));
-                }}
-              />
+              <Label text="PTTY">
+                <Potentiometer
+                  percent={e.v}
+                  onChange={(nv: number) => {
+                    updateStore("values", i(), "v", Math.round(nv));
+                  }}
+                />
+              </Label>
+              <Label text="SLDR" orientation={LabelOrientatian.COLUMN}>
+                <Slider
+                  orientation={SliderOrientation.Horizontal}
+                  value={e.v}
+                  onChange={(nv: number) => {
+                    updateStore("values", i(), "v", Math.round(nv));
+                  }}
+                />
+              </Label>
             </div>
           </div>
         )}

@@ -7,6 +7,7 @@ import {
   Slider,
   SliderOrientation,
   TextInput,
+  Label,
 } from "../components";
 
 export default {
@@ -14,7 +15,11 @@ export default {
   component: Potentiometer,
 };
 
-export const PotentiometerStory = () => <Potentiometer percent={0} />;
+export const PotentiometerStory = () => (
+  <Label text="Volume">
+    <Potentiometer percent={0} />
+  </Label>
+);
 PotentiometerStory.storyName = "Potentiometer";
 
 export const NumericalInputStory = () => (

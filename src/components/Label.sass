@@ -1,0 +1,28 @@
+.container
+  font-family: var(--font-family)
+  font-size: var(--font-size-labels)
+  text-transform: uppercase
+  background: var(--color-bg)
+  color: var(--color-fg)
+  padding: var(--padding-container)
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-grow: 1
+  gap: var(--padding-container)
+
+  outline: var(--outline-width) solid var(--color-border)
+  outline-offset: -var(--outline-width)
+  &:hover
+    .text
+      color: currentColor
+
+  &.row
+    flex-direction: row
+
+  &.col
+    flex-direction: column
+
+  .text
+    order: 0
+    font-weight: bold

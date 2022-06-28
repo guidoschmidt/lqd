@@ -2,12 +2,13 @@ import "./IconButton.sass";
 
 interface IIconButtonProps {
   onClick: () => void;
+  children: JSX.Element;
 }
 
 function IconButton(props: IIconButtonProps) {
   return (
     <button class="button" onClick={props?.onClick}>
-      Button
+      {props.children}
     </button>
   );
 }
