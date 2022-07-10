@@ -15,11 +15,12 @@ type LabelProps = {
   children: JSX.Element | JSX.Element[];
   orientation?: LabelOrientatian;
   order?: LabelOrder;
+  style: object;
 };
 
 function Label(props: LabelProps) {
   return (
-    <div class={["container", props.orientation].join(" ")}>
+    <div class={["container", props.orientation].join(" ")} style={props.style}>
       <label class="text">{props.text}</label>
       {props.children}
     </div>

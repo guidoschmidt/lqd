@@ -1,27 +1,29 @@
-import { Label, Use, Component, MinMax, Step } from "lqd";
+import { Labeled, Use, Component, MinMax, Step } from "lqd";
 
 export class Settings {
   @Use(Component.Color)
-  @Label("Background Color")
+  @Labeled("BKGRND")
   backgroundColor = "#ffffff";
 
   @Use(Component.Color)
-  @Label("Foreground Color")
+  @Labeled("FRGRND")
   foregroundColor = "#000000";
 
-  @Label("Tile Count")
+  @Use(Component.Slider)
+  @Labeled("Tile Count")
   @MinMax(1, 300)
   tileCount: number = 20;
 
-  @Label("Line Width")
+  @Labeled("Line Width")
   @MinMax(1, 10)
   lineWidth: number = 5;
 
-  @Label("Balance")
+  @Use(Component.Slider)
+  @Labeled("Balance")
   @MinMax(0, 1)
   @Step(0.01)
   balance: number = 0.6;
 
-  @Label("Invert")
+  @Labeled("Invert")
   invert: boolean = false;
 }

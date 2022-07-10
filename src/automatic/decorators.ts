@@ -1,4 +1,4 @@
-export function Label(text: string) {
+export function Labeled(text: string) {
   return (target: any, propertyKey: string) => {
     Reflect.set(target, `__lqd__${propertyKey}__Label`, text);
   };

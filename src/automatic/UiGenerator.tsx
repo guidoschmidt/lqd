@@ -1,7 +1,8 @@
 import { For, Switch, Match, mergeProps, onCleanup } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
+import { LabelOrientatian, SliderOrientation } from "../components";
 // Components
-import { NumericalInput, ColorInput, RadioButton } from "../lib";
+import { NumericalInput, ColorInput, RadioButton, Label, Slider } from "../lib";
 // Style
 import "./UiGenerator.sass";
 
@@ -58,42 +59,55 @@ function UiGenerator(props: IUiGeneratorProps) {
             props.onChange && props.onChange(key, v);
           };
 
-          // return (
-          //   <div>
-          //     <b>{key}</b> <span>{uiType}</span>
-          //   </div>
-          // );
-
           return (
             <Switch fallback={<div>{component}</div>}>
               <Match when={component == "number"}>
-                <label>{component}</label>
-                <label>{label}</label>
-                <NumericalInput
-                  value={(mergedProps.store as any)[key]}
-                  onChange={updateFn}
-                  step={step}
-                  min={minMax?.min}
-                  max={minMax?.max}
-                />
+                <Label
+                  text={label}
+                  orientation={LabelOrientatian.COLUMN}
+                  style={{ "grid-column": "span 2" }}
+                >
+                  <NumericalInput
+                    value={(mergedProps.store as any)[key]}
+                    onChange={updateFn}
+                    step={step}
+                    min={minMax?.min}
+                    max={minMax?.max}
+                  />
+                </Label>
               </Match>
 
               <Match when={component == "boolean"}>
-                <label>{component}</label>
-                <label>{label}</label>
-                <RadioButton
-                  on={(mergedProps.store as any)[key]}
-                  onChange={updateFn}
-                />
+                <Label text={label}>
+                  <RadioButton
+                    on={(mergedProps.store as any)[key]}
+                    onChange={updateFn}
+                  />
+                </Label>
               </Match>
 
               <Match when={component == "Color"}>
-                <label>{component}</label>
-                <label>{label}</label>
-                <ColorInput
-                  color={(mergedProps.store as any)[key]}
-                  onChange={updateFn}
-                />
+                <Label text={label} orientation={LabelOrientatian.COLUMN}>
+                  <ColorInput
+                    color={(mergedProps.store as any)[key]}
+                    onChange={updateFn}
+                  />
+                </Label>
+              </Match>
+
+              <Match when={component == "Slider"}>
+                <Label
+                  text={label}
+                  orientation={LabelOrientatian.COLUMN}
+                  style={{ "grid-column": "span 2" }}
+                >
+                  <Slider
+                    value={(mergedProps.store as any)[key]}
+                    onChange={updateFn}
+                    orientation={SliderOrientation.Horizontal}
+                    step={step}
+                  />
+                </Label>
               </Match>
             </Switch>
           );

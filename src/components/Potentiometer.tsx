@@ -15,14 +15,10 @@ const clamp = (v: number, min: number, max: number): number => {
 
 function Potentiometer(props: IPotentiometerProps) {
   let knob: HTMLDivElement;
-  let [value, setValue] = createSignal(0);
+  let [value, setValue] = createSignal(props.percent);
   let [grabbed, setGrabbed] = createSignal(false);
 
   createEffect(() => setValue(props.percent));
-
-  onMount(() => {
-    setValue(props.percent);
-  });
 
   const onPointerMove = (e: MouseEvent) => {
     e.preventDefault();

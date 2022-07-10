@@ -10,6 +10,9 @@ interface ISliderProps {
   value: number;
   onChange?: (v: number) => any;
   orientation?: SliderOrientation;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 function Slider(props: ISliderProps) {
