@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { For, Show } from "solid-js/web";
-import "scss.ui.toolkit/scss/components/_select.scss";
+import "scss.ui.toolkit/6-components/_select.scss";
 
 interface ISelectProps {
   options: Array<T>;

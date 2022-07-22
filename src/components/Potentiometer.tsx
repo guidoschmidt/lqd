@@ -1,5 +1,5 @@
-import { createEffect, createSignal, onMount } from "solid-js";
-import "./Potentiometer.sass";
+import { createEffect, createSignal } from "solid-js";
+import "scss.ui.toolkit/6-components/_potentiometer.scss";
 
 interface IPotentiometerProps {
   percent: number;

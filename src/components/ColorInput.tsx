@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import "./ColorInput.sass";
+import "scss.ui.toolkit/6-components/_color.scss";
 
 type ColorInputProps = {
   color: string;

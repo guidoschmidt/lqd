@@ -1,5 +1,5 @@
 import { createSignal, createEffect } from "solid-js";
-import "./NumericalInput.sass";
+import "scss.ui.toolkit/6-components/_number.scss";
 
 interface INumericalInputProps {
   value: number;
@@ -22,7 +22,7 @@ function NumericalInput(props: INumericalInputProps) {
   };
 
   return (
-    <div class="numerical-input">
+    <div class="number input-row">
       <button
         class="button"
         onClick={() => handleChange(value() - (props?.step || 1))}

@@ -1,4 +1,5 @@
 import { createSignal, createEffect } from "solid-js";
+import "scss.ui.toolkit/6-components/_slider.scss";
 import "./Slider.sass";
 
 export enum SliderOrientation {

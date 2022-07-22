@@ -8,6 +8,7 @@ import {
   SliderOrientation,
   TextInput,
   Label,
+  Select,
 } from "../components";
 
 export default {
@@ -100,3 +101,23 @@ export const ColorInputStory = () => {
   );
 };
 ColorInputStory.storyName = "Color Input";
+
+export const SelectStory = () => {
+  enum Options {
+    OPTION_A,
+    OPTION_B,
+    OPTION_C,
+  }
+
+  return (
+    <div>
+      <Select
+        options={Object.values(Options).filter((e: any) => isNaN(e))}
+        onSelect={(e, i) => {
+          console.log(e, i);
+        }}
+      />
+    </div>
+  );
+};
+SelectStory.storyName = "Selection Input";
