@@ -1,7 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
 import "scss.ui.toolkit/6-components/_number.scss";
 
-interface INumericalInputProps {
+interface INumberInputProps {
   value: number;
   onChange: Function;
   min?: number;
@@ -9,7 +9,7 @@ interface INumericalInputProps {
   step?: number;
 }
 
-function NumericalInput(props: INumericalInputProps) {
+function NumberInput(props: INumberInputProps) {
   const [value, setValue] = createSignal(props.value);
 
   createEffect(() => setValue(props.value));
@@ -51,4 +51,4 @@ function NumericalInput(props: INumericalInputProps) {
   );
 }
 
-export { NumericalInput };
+export { NumberInput };

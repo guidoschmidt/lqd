@@ -1,12 +1,12 @@
 import { createSignal, createEffect } from "solid-js";
-import "./RadioButton.sass";
+import "scss.ui.toolkit/6-components/_toggle.scss";
 
-interface IRadioButtonProps {
+interface IToggleProps {
   on: boolean;
   onChange?: (on: boolean) => any;
 }
 
-function RadioButton(props: IRadioButtonProps) {
+function Toggle(props: IToggleProps) {
   const [isOn, setOn] = createSignal(props.on);
 
   createEffect(() => setOn(props.on));
@@ -18,10 +18,10 @@ function RadioButton(props: IRadioButtonProps) {
   };
 
   return (
-    <div class="radio-button" onClick={handleClick}>
+    <div class="toggle" onClick={handleClick}>
       <div classList={{ state: true, on: isOn() }} />
     </div>
   );
 }
 
-export { RadioButton };
+export { Toggle };

@@ -12,12 +12,8 @@
   align-items: center
   margin: var(--outline-width)
   transition: outline 200ms ease
-  flex-grow: 1
-  width: 100%
-  height: 100%
-  &:hover
-    /* outline-color: var(--color-slider)
-    .track-wrapper
+  .track-wrapper
+    &:hover
       .track
         background: var(--color-slider)
         .knob
@@ -36,16 +32,16 @@
           transform: translateX(-50%)
           width: var(--thumb-height)
           min-height: var(--thumb-width)
-    &:hover
-      .track-wrapper
-        .track
-          .knob
-            min-height: calc(var(--thumb-width) * 2.0)
+    .track-wrapper:hover
+      .track
+        .knob
+          min-height: calc(var(--thumb-width) * 2.0)
 
   &.vertical
     min-height: 100px
     height: 100px
     .track-wrapper
+      padding: 0 calc(2 * var(--track-width))
       height: 100%
       .track
         width: var(--track-width)
@@ -55,11 +51,10 @@
           transform: translateY(-50%)
           height: var(--thumb-height)
           min-width: var(--thumb-width)
-    &:hover
-      .track-wrapper
-        .track
-          .knob
-            min-width: calc(var(--thumb-width) * 2.0)
+    .track-wrapper:hover
+      .track
+        .knob
+          min-width: calc(var(--thumb-width) * 2.0)
 
   .track-wrapper
     width: 100%

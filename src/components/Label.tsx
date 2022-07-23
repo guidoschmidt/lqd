@@ -15,7 +15,7 @@ type LabelProps = {
   children: JSX.Element | JSX.Element[];
   orientation?: LabelOrientatian;
   order?: LabelOrder;
-  style: object;
+  style?: object;
 };
 
 function Label(props: LabelProps) {

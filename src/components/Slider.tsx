@@ -1,4 +1,4 @@
-import { createSignal, createEffect } from "solid-js";
+import { createSignal } from "solid-js";
 import "scss.ui.toolkit/6-components/_slider.scss";
 import "./Slider.sass";
 
@@ -22,7 +22,7 @@ function Slider(props: ISliderProps) {
 
   let trackRef: HTMLDivElement;
 
-  createEffect(() => setValue(props.value));
+  // createEffect(() => setValue(props.value));
 
   const onChange = (e: PointerEvent | MouseEvent) => {
     /** Horizontal */
