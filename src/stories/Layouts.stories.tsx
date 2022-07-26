@@ -3,7 +3,7 @@ import { createStore } from "solid-js/store";
 import {
   TextInput,
   Potentiometer,
-  NumericalInput,
+  NumberInput,
   Slider,
   ColorInput,
   Label,
@@ -54,7 +54,11 @@ export const PotentiometerStory = () => {
       v: Math.round(Math.random() * 100),
       l: `Input ${i}`,
       f: (Math.random() - 0.5) * 3.0,
-      c: randomHexColor(),
+      c: {
+        r: Math.round(Math.random() * 200),
+        g: Math.round(Math.random() * 200),
+        b: Math.round(Math.random() * 200),
+      },
     })),
   });
 
@@ -79,6 +83,17 @@ export const PotentiometerStory = () => {
         "f",
         v.f + (noise.perlin2(t(), t()) + 1) * 0.0001
       );
+      updateStore(
+        "values",
+        i,
+        "f",
+        v.f + (noise.perlin2(t(), t()) + 1) * 0.0001
+      );
+      updateStore("values", i, "c", {
+        r: Math.round(v.c.r + (noise.perlin2(t(), t()) + 1) * 54),
+        g: Math.round(v.c.g + (noise.perlin2(t(), t()) + 1) * 54),
+        b: Math.round(v.c.b + (noise.perlin2(t(), t()) + 1) * 54),
+      });
     });
   }, 16);
 
@@ -103,7 +118,9 @@ export const PotentiometerStory = () => {
               style={{
                 width: "100%",
                 height: "100%",
-                background: e.c,
+                background: `#${e.c.r.toString(16)}${e.c.g.toString(
+                  16
+                )}${e.c.b.toString(16)}`,
                 opacity: `${e.v}%`,
               }}
             />
@@ -139,7 +156,9 @@ export const PotentiometerStory = () => {
               >
                 <Label text="CLR">
                   <ColorInput
-                    color={e.c}
+                    color={`#${e.c.r.toString(16)}${e.c.g.toString(
+                      16
+                    )}${e.c.b.toString(16)}`}
                     onChange={(c) => {
                       updateStore("values", i(), "c", c);
                     }}
@@ -152,7 +171,7 @@ export const PotentiometerStory = () => {
                   updateStore("values", i(), "l", v);
                 }}
               />
-              <NumericalInput
+              <NumberInput
                 value={e.v}
                 onChange={(nv: number) => {
                   updateStore("values", i(), "v", Math.round(nv));

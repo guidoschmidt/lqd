@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import "scss.ui.toolkit/6-components/_color.scss";
 
 type ColorInputProps = {
@@ -10,8 +10,7 @@ function ColorInput(props: ColorInputProps) {
   const [color, setColor] = createSignal(props.color || "#ffffff");
   const uuid = crypto.randomUUID();
 
-  // @TODO
-  // implement sideeffect signal to change on props.color
+  createEffect(() => setColor(props.color));
 
   const onChange = (e: InputEvent) => {
     const target = e.target as HTMLInputElement;
