@@ -2,7 +2,7 @@ import { For, Switch, Match, mergeProps, onCleanup } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
 import { LabelOrientatian, SliderOrientation } from "../components";
 // Components
-import { NumericalInput, ColorInput, RadioButton, Label, Slider } from "../lib";
+import { NumberInput, ColorInput, Toggle, Label, Slider } from "../lib";
 // Style
 import "./UiGenerator.sass";
 
@@ -67,7 +67,7 @@ function UiGenerator(props: IUiGeneratorProps) {
                   orientation={LabelOrientatian.COLUMN}
                   style={{ "grid-column": "span 2" }}
                 >
-                  <NumericalInput
+                  <NumberInput
                     value={(mergedProps.store as any)[key]}
                     onChange={updateFn}
                     step={step}
@@ -79,7 +79,7 @@ function UiGenerator(props: IUiGeneratorProps) {
 
               <Match when={component == "boolean"}>
                 <Label text={label}>
-                  <RadioButton
+                  <Toggle
                     on={(mergedProps.store as any)[key]}
                     onChange={updateFn}
                   />
