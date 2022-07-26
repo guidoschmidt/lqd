@@ -7,3 +7,4 @@ export * from "./Slider";
 export * from "./TextInput";
 export * from "./Label";
 export * from "./Select";
+export * from "./FileUpload";
