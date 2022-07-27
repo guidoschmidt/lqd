@@ -1,4 +1,5 @@
-import "./IconButton.sass";
+// import "./IconButton.sass";
+import "scss.ui.toolkit/6-components/_button.scss";
 
 interface IIconButtonProps {
   onClick: () => void;
