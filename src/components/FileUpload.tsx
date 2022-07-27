@@ -22,7 +22,7 @@ function FileUpload(props: FileUploadProps) {
     <div class="file-upload">
       <input id="upload" type="file" onInput={onUpload} ref={inputRef} />
       <label class="button" for="upload">
-        Upload
+        Select File
       </label>
       <span class="filename">{filename()}</span>
       <button>Do Something</button>
